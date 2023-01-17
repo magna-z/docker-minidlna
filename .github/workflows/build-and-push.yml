@@ -23,8 +23,8 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Checkout this repository
       uses: actions/checkout@v3
-    - name: Set environment DOCKERHUB_IMAGE on "main" branch
-      if: github.ref == 'refs/heads/main'
+    - name: Set environment DOCKERHUB_IMAGE on "master" branch
+      if: github.ref == 'refs/heads/master'
       run: echo "DOCKERHUB_IMAGE=${DOCKERHUB_REPOSITORY}:latest" >> $GITHUB_ENV
     - name: Set environment DOCKERHUB_IMAGE on "v*" branches
       if: github.ref != 'refs/heads/main'
