@@ -1,11 +1,8 @@
-FROM alpine:3.4
+FROM alpine:3.17
 
-MAINTAINER Maxim Zalysin <zalysin.m@gmail.com>
+ENV MINIDLNA_VERSION=1.3.2 \
+	MINIDLNA_ALPINE_BUILD=r0
 
-LABEL pro.magnaz.minidlna.version="{\"container\": 1.0, \"alpine\": 3.4 \"minidlna\": 1.1.5}"
-
-RUN apk --no-cache add minidlna
-
-EXPOSE 1900/udp 8200
+RUN apk add --no-cache --no-progress minidlna==${MINIDLNA_VERSION}-${MINIDLNA_ALPINE_BUILD}
 
 ENTRYPOINT ["minidlnad", "-d"]
